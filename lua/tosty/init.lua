@@ -1,5 +1,6 @@
 require("tosty.remap")
 require("tosty.lazy_init")
+require("tosty.set")
 local augroup = vim.api.nvim_create_augroup
 local TostyGroup = augroup('Tosty', {})
 
