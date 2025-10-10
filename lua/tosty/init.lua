@@ -51,3 +51,7 @@ autocmd('LspAttach', {
         vim.keymap.set("n", "<leader>oi", function() vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}}) end, opts)
     end
 })
+
+vim.keymap.set('n', '<leader>jp', function()
+  require('tosty.json_path').copy()
+end, { desc = 'Copy JSON path under cursor' })

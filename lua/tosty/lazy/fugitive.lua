@@ -1,7 +1,24 @@
 return {
     "tpope/vim-fugitive",
     config = function()
+        -- Git status
         vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+
+        -- Toggle :G blame (open if absent, close if a blame window is visible)
+        vim.keymap.set("n", "<leader>gb", function()
+            -- Look for an existing fugitive blame window
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                local buf = vim.api.nvim_win_get_buf(win)
+                local ft = vim.bo[buf].filetype
+                if ft == "fugitiveblame" then
+                    -- Close the first blame window we find (toggle off)
+                    vim.api.nvim_win_close(win, true)
+                    return
+                end
+            end
+            -- None found -> open a new blame view (toggle on)
+            vim.cmd('Git blame')
+        end, { desc = "Toggle Git blame" })
 
         local Tosty_Fugitive = vim.api.nvim_create_augroup("Tosty_Fugitive", {})
 
@@ -31,7 +48,7 @@ return {
             end,
         })
 
-
+        -- Merge conflict helpers
         vim.keymap.set("n", "gu", "<cmd>diffget //2<CR>")
         vim.keymap.set("n", "gh", "<cmd>diffget //3<CR>")
     end
