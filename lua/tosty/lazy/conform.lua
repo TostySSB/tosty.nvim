@@ -20,8 +20,10 @@ return {
     -- Define your formatters
     formatters_by_ft = {
       lua = { "stylua" },
-      pjavascript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = { "prettierd", "prettier", stop_after_first = true },
 			typescript = { "prettierd", "prettier", stop_after_first = true },
+      typescriptreact = { "prettierd", "prettier", stop_after_first = true }, -- Add this line
+      javascriptreact = { "prettierd", "prettier", stop_after_first = true }, -- Add this too for .jsx files
 			json = { "prettierd", "prettier", stop_after_first = true },
     },
     -- Set default options
