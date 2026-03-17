@@ -2,6 +2,8 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+vim.g.netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
+
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -26,6 +28,11 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+
+-- Fold settings
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99 -- Start with all folds open, use zM to close all
 
 -- vim.opt.colorcolumn = "80"
 

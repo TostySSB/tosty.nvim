@@ -44,7 +44,7 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
-                "ts_ls", "graphql", "eslint"
+                "ts_ls", "graphql", "eslint", "astro",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -86,6 +86,19 @@ return {
                                 },
                             }
                         }
+                    }
+                end,
+                ["astro_ls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.astro_ls.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            astro = {
+                                format = {
+                                    enable = true,
+                                },
+                            },
+                        },
                     }
                 end,
             }
